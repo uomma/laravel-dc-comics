@@ -8,6 +8,7 @@
 @section('page.main')
     <ul>
         <table class="table">
+            <a href="{{route('comics.create')}}" class="btn btn-primary">crea comic</a>
             <thead>
                 <tr>
                     <th scope="col">title</th>
