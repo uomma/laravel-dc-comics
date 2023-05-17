@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\ComicController;
+use App\Http\Controllers\Guest\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,51 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [PageController::class, 'index']);
+Route::resource('comics', ComicController::class);
 
-Route::get('/characters', function () {
-
-    $films =[
-        'movies' => config('db')
-    ];
-
-    return view('characters', $films);
-});
-
-Route::get('/comics', function () {
-    return view('home');
-});
-
-Route::get('/movies', function () {
-    return view('home');
-});
-
-Route::get('/tv', function () {
-    return view('home');
-});
-
-Route::get('/games', function () {
-    return view('home');
-});
-
-Route::get('/collectibles', function () {
-    return view('home');
-});
-
-Route::get('/videos', function () {
-    return view('home');
-});
-
-Route::get('/fans', function () {
-    return view('home');
-}); 
-
-Route::get('/news', function () {
-    return view('home');
-});
-
-Route::get('/shop', function () {
-    return view('home');
-});
