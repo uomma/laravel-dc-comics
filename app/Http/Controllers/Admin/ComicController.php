@@ -44,7 +44,7 @@ class ComicController extends Controller
         $data= $request->all();
               
         $newComic = new Comic();
-
+/* 
         $newComic->title = $data['title'];
         $newComic->description = $data['description'];
         $newComic->thumb = $data['thumb'];
@@ -52,11 +52,12 @@ class ComicController extends Controller
         $newComic->series = $data['series'];
         $newComic->sale_date = $data['sale_date']; 
         $newComic->artists = implode(', ', $data['artists']);
-        $newComic->writers = implode(', ', $data['writers']);
+        $newComic->writers = implode(', ', $data['writers']); */
 
+        $newComic->fill($data);
         $newComic->save();
 
-        redirect()->route('comic.show', $newComic->id);
+        redirect()->route('comics.show', $newComic->id);
     }
 
     /**
@@ -75,12 +76,12 @@ class ComicController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Comic $comic
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comic $comic)
     {
-        //
+        return view('comic.edit', compact('comic'));
     }
 
     /**
